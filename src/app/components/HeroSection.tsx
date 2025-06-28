@@ -39,11 +39,11 @@ export default function HeroSection() {
           className="flex justify-center hover:shadow-lg transition-all duration-300"
         >
           <Image
-            src="/hero-section-Photoroom.jpg" // Replace with your actual image
+            src="/hero-section.svg" // Replace with your actual image
             alt="Web design illustration"
             width={500}
             height={400}
-            className="object-cover rounded-xl shadow-md"
+            className="object-cover rounded-xl bg-dark shadow-md"
           />
         </motion.div>
       </div>

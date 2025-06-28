@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
+import Image from "next/image";
 
 export default function Navbar() {
   const [open, setOpen] = useState(false);
@@ -28,6 +29,13 @@ export default function Navbar() {
           href="/"
           className="text-xl font-bold font-montserrat text-dark dark:text-light"
         >
+          <Image 
+            src="/code.png" // Replace with your actual logo
+            alt="Raza.dev Logo"
+            width={40}
+            height={40}
+            className="inline-block mr-2"
+          />
           Raza.dev
         </Link>
 

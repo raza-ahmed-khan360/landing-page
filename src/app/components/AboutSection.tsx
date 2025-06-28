@@ -40,7 +40,7 @@ export default function AboutSection() {
           className="flex justify-center"
         >
           <Image
-            src="/about-illustration.png" // Replace with actual image
+            src="/about.png" // Replace with actual image
             alt="About Raza Ahmed"
             className="rounded-xl shadow-md w-full max-w-sm object-cover"
             width={500}
