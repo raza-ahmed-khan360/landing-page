@@ -24,7 +24,7 @@ export default function AboutSection() {
             Who I Am
           </h2>
           <p className="text-muted font-poppins text-lg">
-            I'm Raza Ahmed — a passionate web designer and developer focused on building modern, animated, high-performance websites for creators, startups, and brands.
+            I&apos;m Raza Ahmed — a passionate web designer and developer focused on building modern, animated, high-performance websites for creators, startups, and brands.
           </p>
           <p className="text-muted font-poppins">
             With deep experience in <strong>Next.js</strong>, <strong>Tailwind CSS</strong>, and <strong>Framer Motion</strong>, I craft digital experiences that feel fast, fluid, and engaging. I also offer design-to-code services from Figma and ensure SEO and responsiveness are never compromised.
