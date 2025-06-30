@@ -51,7 +51,7 @@ export default function Footer() {
             <li>
               <Link
                 href="/"
-                className="text-light/80 hover:text-white transition"
+                className="text-light/80 hover:text-primary transition"
               >
                 Home
               </Link>
@@ -59,7 +59,7 @@ export default function Footer() {
             <li>
               <Link
                 href="#about"
-                className="text-light/80 hover:text-white transition"
+                className="text-light/80 hover:text-primary transition"
               >
                 About
               </Link>
@@ -67,7 +67,7 @@ export default function Footer() {
             <li>
               <Link
                 href="#projects"
-                className="text-light/80 hover:text-white transition"
+                className="text-light/80 hover:text-primary transition"
               >
                 Projects
               </Link>
@@ -75,9 +75,25 @@ export default function Footer() {
             <li>
               <Link
                 href="#contact"
-                className="text-light/80 hover:text-white transition"
+                className="text-light/80 hover:text-primary transition"
               >
                 Contact
+              </Link>
+            </li>
+            <li>
+              <Link
+                href="/terms-and-conditions"
+                className="text-light/80 hover:text-primary transition"
+              >
+                Terms and Conditions
+              </Link>
+            </li>
+            <li>
+              <Link
+                href="/privacy-policy"
+                className="text-light/80 hover:text-primary transition"
+              >
+                Privacy Policy
               </Link>
             </li>
           </ul>

@@ -7,14 +7,11 @@ import PricingSection from "./components/PricingSection";
 import ContactSection from "./components/ContactForm";
 import TestimonialsSection from "./components/TestimonialSection";
 import CTASection from "./components/CTASection";
-import Navbar from "./components/NavBar";
 import AboutSection from "./components/AboutSection";
-import Footer from "./components/FooterSection";
 
 export default function Home() {
   return (
     <>
-    <Navbar />
       <HeroSection />
       <AboutSection />
       <ServicesSection />
@@ -25,7 +22,6 @@ export default function Home() {
       <ContactSection />
       <TestimonialsSection />
       <CTASection />
-    <Footer />
     </>
   );
 }

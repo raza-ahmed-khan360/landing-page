@@ -23,10 +23,10 @@ export default function AboutSection() {
           <h2 className="text-3xl md:text-4xl font-bold text-dark dark:text-light font-montserrat">
             Who I Am
           </h2>
-          <p className="text-muted font-poppins text-lg">
+          <p className="text-light/80 font-poppins text-lg">
             I&apos;m Raza Ahmed — a passionate web designer and developer focused on building modern, animated, high-performance websites for creators, startups, and brands.
           </p>
-          <p className="text-muted font-poppins">
+          <p className="text-light/80 font-poppins">
             With deep experience in <strong>Next.js</strong>, <strong>Tailwind CSS</strong>, and <strong>Framer Motion</strong>, I craft digital experiences that feel fast, fluid, and engaging. I also offer design-to-code services from Figma and ensure SEO and responsiveness are never compromised.
           </p>
         </motion.div>
