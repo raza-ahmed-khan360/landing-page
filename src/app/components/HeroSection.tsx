@@ -1,10 +1,18 @@
 "use client";
 
 import { motion } from "framer-motion";
-import Image from "next/image";
 import Link from "next/link";
+import { useEffect, useState } from "react";
+import Image from "next/image";
 
 export default function HeroSection() {
+  const [uniqueKey, setUniqueKey] = useState("");
+
+  useEffect(() => {
+    // Append a timestamp to bust cache and reload the SVG
+    setUniqueKey(`?v=${Date.now()}`);
+  }, []);
+
   return (
     <section className="w-full py-24 px-4 md:px-8">
       <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
@@ -20,7 +28,8 @@ export default function HeroSection() {
             With Expert Web Design
           </h1>
           <p className="text-lg font-poppins">
-            I create modern, animated, high-converting websites using Next.js, Tailwind CSS & Framer Motion.
+            I create modern, animated, high-converting websites using Next.js,
+            Tailwind CSS & Framer Motion.
           </p>
           <Link
             href="#contact"
@@ -39,11 +48,12 @@ export default function HeroSection() {
           className="flex justify-center hover:shadow-lg transition-all duration-300"
         >
           <Image
-            src="/hero-section.svg" // Replace with your actual image
+            src={`/hero-section.svg${uniqueKey}`}
             alt="Web design illustration"
             width={500}
             height={400}
             className="object-cover rounded-xl bg-dark shadow-md"
+            priority
           />
         </motion.div>
       </div>
