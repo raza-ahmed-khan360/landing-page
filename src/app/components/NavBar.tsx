@@ -27,15 +27,28 @@ export default function Navbar() {
         {/* Logo */}
         <Link
           href="/"
-          className="text-xl font-bold font-montserrat text-dark dark:text-light"
+          className="text-xl font-bold font-montserrat text-dark dark:text-light flex items-center"
         >
-          <Image 
-            src="/code.png" // Replace with your actual logo
-            alt="Raza.dev Logo"
-            width={40}
-            height={40}
-            className="inline-block mr-2"
-          />
+          <span className="relative w-10 h-10 mr-2">
+            {/* Light mode logo */}
+            <Image
+              src="/code-light.svg"
+              alt="Raza.dev Logo"
+              width={40}
+              height={40}
+              className="absolute inset-0 dark:hidden"
+              priority
+            />
+            {/* Dark mode logo */}
+            <Image
+              src="/code-dark.svg"
+              alt="Raza.dev Logo"
+              width={40}
+              height={40}
+              className="inset-0 hidden dark:inline-block"
+              priority
+            />
+          </span>
           Raza.dev
         </Link>
 
