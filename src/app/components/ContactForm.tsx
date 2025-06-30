@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import Link from "next/link";
 
 interface FormState {
   name: string;
@@ -187,15 +188,34 @@ export default function ContactSection() {
                 "Payment Gateway Integration",
                 "Newsletter Integration",
               ].map((addon) => (
-                <label key={addon} className="flex items-center gap-2">
+                <label
+                  key={addon}
+                  className="flex items-center gap-2 cursor-pointer select-none font-poppins"
+                >
                   <input
                     type="checkbox"
                     name="addons"
                     value={addon}
                     checked={form.addons.includes(addon)}
                     onChange={handleChange}
+                    className="peer hidden"
                   />
-                  {addon}
+                  <div className="w-5 h-5 rounded-md border border-muted/40 bg-white dark:bg-dark flex items-center justify-center transition-colors duration-200 peer-checked:bg-primary peer-checked:border-primary">
+                    <svg
+                      className="w-3 h-3 text-light dark:text-dark opacity-0 peer-checked:opacity-100 transition-opacity"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="3"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        d="M5 13l4 4L19 7"
+                      />
+                    </svg>
+                  </div>
+                  <span className="text-light dark:text-dark">{addon}</span>
                 </label>
               ))}
             </div>
@@ -219,7 +239,26 @@ export default function ContactSection() {
             className="w-full px-4 py-3 rounded-xl border border-muted/30"
             required
           />
-
+          <p className="text-sm text-muted mb-4">
+            By submitting, you agree to our{" "}
+            <Link
+              href="/terms-and-conditions"
+              className="text-primary hover:underline"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Terms and Conditions
+            </Link>{" "}
+            and{" "}
+            <Link
+              href="/privacy-policy"
+              className="text-primary hover:underline"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Privacy Policy
+            </Link>
+          </p>
           <button
             type="submit"
             className="w-full px-6 py-3 bg-primary text-dark rounded-xl font-semibold hover:bg-white hover:text-primary border border-primary transition"
