@@ -6,21 +6,22 @@ import { useInView } from "react-intersection-observer";
 const packages = [
   {
     name: "Starter",
-    price: "$199",
+    price: "$249",
     description:
-      "Perfect for small businesses and personal brands. Get a sleek 1-page website — ideal for portfolios, link-in-bio pages, or landing page for marketing purposes.",
+      "Perfect for small businesses and personal brands. Get a sleek 1-page website — ideal for portfolios, link-in-bio pages, or landing pages.",
     features: [
       "Responsive Design",
       "1 Landing Page",
       "SEO Basics",
       "Delivery: 3–5 Days",
     ],
+    recommended: false,
   },
   {
     name: "Pro",
-    price: "$399",
+    price: "$499",
     description:
-      "Ideal for growing businesses. Build a complete multi-page website with custom animations — great for service providers, agencies, and startups.",
+      "Ideal for growing businesses. Build a multi-page website with scroll animations — perfect for services, agencies, and startups.",
     features: [
       "Up to 5 Pages",
       "Custom Animations",
@@ -28,12 +29,13 @@ const packages = [
       "Blog Integration",
       "Delivery: 5–7 Days",
     ],
+    recommended: true,
   },
   {
     name: "Elite",
-    price: "$699",
+    price: "$899",
     description:
-      "Complete solution with advanced customization. Designed for tech startups, SaaS tools, and eCommerce — scalable, animated, CMS-powered.",
+      "Complete solution for startups and tech businesses. Includes CMS, APIs, animations & scalability features.",
     features: [
       "Unlimited Pages",
       "Advanced Framer Animations",
@@ -42,6 +44,7 @@ const packages = [
       "Performance Optimization",
       "Delivery: 7–10 Days",
     ],
+    recommended: false,
   },
 ];
 
@@ -60,24 +63,17 @@ export default function PricingSection() {
   const { ref, inView } = useInView({ triggerOnce: true });
 
   return (
-    <section
-      id="pricing"
-      className="w-full bg-light dark:bg-dark py-20 px-4 md:px-8"
-    >
+    <section id="pricing" className="w-full bg-light dark:bg-dark py-20 px-4 md:px-8">
       <div className="max-w-6xl mx-auto space-y-12 text-center">
         <h2 className="text-3xl md:text-4xl font-bold font-montserrat text-dark dark:text-light">
           Pricing Plans
         </h2>
         <p className="text-muted text-lg font-poppins">
-          Choose a plan that suits your business stage. You can also add extras
-          as needed.
+          Choose a plan that suits your business stage. Add extras if needed.
         </p>
 
         {/* Packages */}
-        <div
-          ref={ref}
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8"
-        >
+        <div ref={ref} className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
           {packages.map((pkg, index) => (
             <motion.div
               key={index}
@@ -85,17 +81,22 @@ export default function PricingSection() {
               whileHover={{ scale: 1.05, y: -5 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.5, delay: index * 0.2 }}
-              className="bg-dark dark:bg-light border border-muted/30 rounded-xl shadow-sm p-6 space-y-4 hover:shadow-lg transition-all duration-300"
+              className={`relative bg-dark dark:bg-light border border-muted/30 rounded-xl shadow-sm p-6 space-y-4 hover:shadow-lg transition-all duration-300 ${
+                pkg.recommended ? "ring-2 ring-primary dark:ring-offset-2 dark:ring-offset-dark" : ""
+              }`}
             >
+              {pkg.recommended && (
+                <span className="absolute top-4 right-4 bg-primary text-dark text-xs font-semibold px-3 py-1 rounded-full font-poppins">
+                  Best Offer
+                </span>
+              )}
               <h3 className="text-xl font-semibold text-light dark:text-dark font-montserrat">
                 {pkg.name}
               </h3>
               <p className="text-primary text-start dark:text-dark text-5xl font-bold">
                 {pkg.price}
               </p>
-              <p className="text-muted text-start font-poppins">
-                {pkg.description}
-              </p>
+              <p className="text-muted text-start font-poppins">{pkg.description}</p>
               <ul className="text-sm text-start text-light dark:text-dark font-poppins space-y-2 mt-4">
                 {pkg.features.map((feature, i) => (
                   <li key={i}>✅ {feature}</li>
@@ -120,7 +121,8 @@ export default function PricingSection() {
                 transition={{ delay: i * 0.1 }}
                 className="bg-light dark:bg-dark hover:shadow-lg transition-all duration-300 border border-muted/30 px-4 py-3 rounded-xl text-sm shadow-sm"
               >
-                {addon.name} <span className="text-muted">({addon.price})</span>
+                {addon.name}{" "}
+                <span className="text-muted font-medium">({addon.price})</span>
               </motion.li>
             ))}
           </ul>
