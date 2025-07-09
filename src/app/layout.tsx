@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { Analytics } from "@vercel/analytics/next"
 import "./globals.css";
 import BackToTopButton from "./components/BackToTopButton";
 import Navbar from "./components/NavBar";
@@ -19,6 +20,7 @@ export default function RootLayout({
       <body className={`font-sans scroll-smooth antialiased`}>
         <Navbar />
         {children}
+        <Analytics />
         <BackToTopButton />
         <Footer />
       </body>
