@@ -17,6 +17,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <head>
+        <meta name="google-site-verification" content="_Fql-lbojPPhGIsc7aGAU1iNknR5icdb3_WXEsPzgqc" />
+      </head>
       <body className={`font-sans scroll-smooth antialiased`}>
         <Navbar />
         {children}
