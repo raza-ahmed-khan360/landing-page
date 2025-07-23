@@ -4,17 +4,23 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
 
-interface FormState {
-  name: string;
-  email: string;
-  whatsapp: string;
-  plan: string;
-  addons: string[];
-  message: string;
-  meeting: string;
-}
+// interface FormState {
+//   name: string;
+//   email: string;
+//   whatsapp: string;
+//   plan: string;
+//   addons: string[];
+//   message: string;
+//   meeting: string;
+// }
 
-function SuccessModal({ onClose }: { onClose: () => void }) {
+
+// interface Window {
+//   fbq: (...args: any[]) => void;
+// }
+
+
+function SuccessModal({ onClose }) {
   return (
     <motion.div
       className="fixed inset-0 bg-black/40 backdrop-blur-sm flex items-center justify-center z-50"
@@ -47,7 +53,7 @@ function SuccessModal({ onClose }: { onClose: () => void }) {
 }
 
 export default function ContactSection() {
-  const [form, setForm] = useState<FormState>({
+  const [form, setForm] = useState({
     name: "",
     email: "",
     whatsapp: "",
@@ -61,13 +67,11 @@ export default function ContactSection() {
   const [showModal, setShowModal] = useState(false);
 
   const handleChange = (
-    e: React.ChangeEvent<
-      HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
-    >
+    e
   ) => {
     const { name, value, type } = e.target;
     if (type === "checkbox") {
-      const checked = (e.target as HTMLInputElement).checked;
+      const checked = (e.target).checked;
       setForm((prev) => ({
         ...prev,
         addons: checked
@@ -79,31 +83,37 @@ export default function ContactSection() {
     }
   };
 
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    setSending(true);
+const handleSubmit = async (e) => {
+  e.preventDefault();
+  setSending(true);
 
-    const res = await fetch("/api/contact", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(form),
-    });
+  const res = await fetch("/api/contact", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(form),
+  });
 
-    if (res.ok) {
-      setShowModal(true);
-      setForm({
-        name: "",
-        email: "",
-        whatsapp: "",
-        plan: "Starter",
-        addons: [],
-        message: "",
-        meeting: "",
-      });
+  if (res.ok) {
+    // ✅ Fire Meta Pixel Lead event
+    if (typeof window !== "undefined" && typeof window.fbq === "function") {
+      window.fbq("track", "Lead");
     }
 
-    setSending(false);
-  };
+    setShowModal(true);
+    setForm({
+      name: "",
+      email: "",
+      whatsapp: "",
+      plan: "Starter",
+      addons: [],
+      message: "",
+      meeting: "",
+    });
+  }
+
+  setSending(false);
+};
+
 
   return (
     <section
