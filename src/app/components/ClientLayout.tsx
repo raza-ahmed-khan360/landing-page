@@ -3,20 +3,21 @@
 import Script from 'next/script';
 import { usePathname } from 'next/navigation';
 import { useEffect } from 'react';
+import Image from 'next/image';
 
-export default function ClientLayout({ children }) {
+export default function ClientLayout({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
-  const metaId = process.env.NEXT_PUBLIC_META_PIXEL_ID
+  const metaId = process.env.NEXT_PUBLIC_META_PIXEL_ID;
 
   useEffect(() => {
-    if (typeof window !== 'undefined' && typeof window.fbq === 'function') {
-  window.fbq('track', 'PageView');
-}
+    if (typeof window.fbq === 'function') {
+      window.fbq('track', 'PageView');
+    }
   }, [pathname]);
 
   return (
     <>
-      {/* Meta Pixel Script */}
+      {/* Meta Pixel Script - fires on first load */}
       <Script id="facebook-pixel" strategy="afterInteractive">
         {`
           !function(f,b,e,v,n,t,s)
@@ -32,11 +33,12 @@ export default function ClientLayout({ children }) {
         `}
       </Script>
 
-      {/* NoScript Fallback */}
+      {/* NoScript fallback */}
       <noscript>
-        <img
-          height="1"
-          width="1"
+        <Image
+          height={1}
+          width={1}
+          alt=""
           style={{ display: 'none' }}
           src={`https://www.facebook.com/tr?id=${metaId}&ev=PageView&noscript=1`}
         />

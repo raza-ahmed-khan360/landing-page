@@ -4,23 +4,17 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
 
-// interface FormState {
-//   name: string;
-//   email: string;
-//   whatsapp: string;
-//   plan: string;
-//   addons: string[];
-//   message: string;
-//   meeting: string;
-// }
+interface FormState {
+  name: string;
+  email: string;
+  whatsapp: string;
+  plan: string;
+  addons: string[];
+  message: string;
+  meeting: string;
+}
 
-
-// interface Window {
-//   fbq: (...args: any[]) => void;
-// }
-
-
-function SuccessModal({ onClose }) {
+function SuccessModal({ onClose }: { onClose: () => void }) {
   return (
     <motion.div
       className="fixed inset-0 bg-black/40 backdrop-blur-sm flex items-center justify-center z-50"
@@ -53,7 +47,7 @@ function SuccessModal({ onClose }) {
 }
 
 export default function ContactSection() {
-  const [form, setForm] = useState({
+  const [form, setForm] = useState<FormState>({
     name: "",
     email: "",
     whatsapp: "",
@@ -67,11 +61,13 @@ export default function ContactSection() {
   const [showModal, setShowModal] = useState(false);
 
   const handleChange = (
-    e
+    e: React.ChangeEvent<
+      HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
+    >
   ) => {
     const { name, value, type } = e.target;
     if (type === "checkbox") {
-      const checked = (e.target).checked;
+      const checked = (e.target as HTMLInputElement).checked;
       setForm((prev) => ({
         ...prev,
         addons: checked
@@ -83,10 +79,10 @@ export default function ContactSection() {
     }
   };
 
-const handleSubmit = async (e) => {
+const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
   e.preventDefault();
   setSending(true);
-
+  
   const res = await fetch("/api/contact", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
