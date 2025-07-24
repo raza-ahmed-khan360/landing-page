@@ -5,10 +5,26 @@ import ClientLayout from './components/ClientLayout'
 import BackToTopButton from "./components/BackToTopButton";
 import Navbar from "./components/NavBar";
 import Footer from "./components/FooterSection";
-export const metadata: Metadata = {
-  title: "Raza – Dev",
-  description:
-    "Welcome to Raza Ahmed's developer portfolio. Explore high-performance web projects, modern UI/UX design, animation-rich interfaces, and seamless digital solutions built with Next.js, Tailwind CSS, and Framer Motion.",
+
+export const metadata = {
+  title: 'Raza – Dev',
+  description: "Welcome to Raza Ahmed's developer portfolio. Explore high-performance web projects, modern UI/UX design, animation-rich interfaces, and seamless digital solutions built with Next.js, Tailwind CSS, and Framer Motion.",
+  openGraph: {
+    title: 'Raza – Dev',
+    description: "Welcome to Raza Ahmed's developer portfolio. Explore high-performance web projects, modern UI/UX design, animation-rich interfaces, and seamless digital solutions built with Next.js, Tailwind CSS, and Framer Motion.",
+    url: 'https://raza-dev.vercel.app',
+    siteName: 'Raza Dev',
+    images: [
+      {
+        url: 'https://raza-dev.vercel.app/_next/image?url=%2Fabout.png&w=1080&q=75', // ✅ full URL
+        width: 1200,
+        height: 630,
+        alt: 'Raza Dev – Full Stack Developer',
+      },
+    ],
+    locale: 'en_US',
+    type: 'website',
+  },
 };
 
 export default function RootLayout({
