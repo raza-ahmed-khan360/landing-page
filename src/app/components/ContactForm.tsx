@@ -79,36 +79,37 @@ export default function ContactSection() {
     }
   };
 
-const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-  e.preventDefault();
-  setSending(true);
-  
-  const res = await fetch("/api/contact", {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(form),
-  });
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setSending(true);
 
-  if (res.ok) {
-    // ✅ Fire Meta Pixel Lead event
-    if (typeof window !== "undefined" && typeof window.fbq === "function") {
-      window.fbq("track", "Lead");
+    const res = await fetch("/api/contact", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(form),
+    });
+
+    if (res.ok) {
+      // ✅ Fire Meta Pixel Lead event
+      if (typeof window !== "undefined" && typeof window.fbq === "function") {
+        window.fbq("track", "Lead");
+        window.fbq("track", "CompleteRegistration");
+      }
+
+      setShowModal(true);
+      setForm({
+        name: "",
+        email: "",
+        whatsapp: "",
+        plan: "Starter",
+        addons: [],
+        message: "",
+        meeting: "",
+      });
     }
 
-    setShowModal(true);
-    setForm({
-      name: "",
-      email: "",
-      whatsapp: "",
-      plan: "Starter",
-      addons: [],
-      message: "",
-      meeting: "",
-    });
-  }
-
-  setSending(false);
-};
+    setSending(false);
+  };
 
 
   return (
