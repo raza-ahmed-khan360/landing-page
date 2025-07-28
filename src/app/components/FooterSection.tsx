@@ -11,7 +11,7 @@ const fadeInUp = {
   visible: (i: number) => ({
     opacity: 1,
     y: 0,
-    transition: { delay: i * 0.2, duration: 0.5 },
+    transition: { delay: i * 0.2, duration: 0.3 },
   }),
 };
 
@@ -32,8 +32,8 @@ export default function Footer() {
           viewport={{ once: true }}
           custom={0}
         >
-          <h2 className="text-xl font-bold font-montserrat">Raza Ahmed</h2>
-          <p className="text-sm text-light/80 mt-2 font-poppins">
+          <h2 className="text-xl font-bold font-['Poppins']">Raza.Dev</h2>
+          <p className="text-sm text-light/80 mt-2 font-['Montserrat']">
             Crafting animated, modern websites that drive results.
           </p>
         </motion.div>
@@ -46,8 +46,8 @@ export default function Footer() {
           viewport={{ once: true }}
           custom={1}
         >
-          <h3 className="font-semibold text-light font-poppins mb-2">Links</h3>
-          <ul className="space-y-1 text-sm">
+          <h3 className="font-semibold text-light font-['Poppins'] mb-2">Quick Links</h3>
+          <ul className="space-y-1 text-sm font-['Montserrat']">
             <li>
               <Link
                 href="/"
@@ -107,10 +107,10 @@ export default function Footer() {
           viewport={{ once: true }}
           custom={2}
         >
-          <h3 className="font-semibold text-light font-poppins mb-2">
+          <h3 className="font-semibold text-light font-['Poppins'] mb-2">
             Services
           </h3>
-          <ul className="space-y-1 text-sm">
+          <ul className="space-y-1 text-sm font-['Montserrat']">
             <li>
               <span className="text-light/80">Landing Pages</span>
             </li>
@@ -134,7 +134,7 @@ export default function Footer() {
           viewport={{ once: true }}
           custom={3}
         >
-          <h3 className="font-semibold text-light font-poppins mb-3">
+          <h3 className="font-semibold text-light font-['Poppins'] mb-3">
             Get in Touch
           </h3>
           <div className="flex items-center gap-4">

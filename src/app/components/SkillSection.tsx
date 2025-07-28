@@ -24,18 +24,36 @@ export default function SkillsSection() {
   const { ref, inView } = useInView({ triggerOnce: true });
 
   return (
-    <section id="skills" className="w-full dark:bg-light bg-dark py-20 px-4 md:px-8">
-      <div className="max-w-6xl mx-auto space-y-12 text-center">
-        <h2 className="text-3xl md:text-4xl font-bold font-montserrat dark:text-dark text-light">
-          My Skills
-        </h2>
+    <section
+      id="skills"
+      className="w-full bg-dark dark:bg-light py-20 px-4 md:px-8"
+      aria-labelledby="skills-heading"
+    >
+      <div className="max-w-6xl mx-auto space-y-12">
+        <header className="text-center">
+          <h2
+            id="skills-heading"
+            className="text-3xl md:text-4xl font-bold font-['Poppins'] text-light dark:text-dark"
+          >
+            Full Stack Web Developer Skills
+          </h2>
+          <p className="mt-2 text-light/80 dark:text-dark/80 text-lg font-['Montserrat']">
+            My expertise covers the entire spectrum of modern web development
+            — from HTML to advanced React frameworks like{" "}
+            <strong className="text-primary">Next.js</strong>, making me a
+            strong choice for{' '}
+            <em>Custom Web Development</em>,{' '}
+            <em>E-commerce Website Development</em>, and scalable{' '}
+            <em>Web Application Development</em>.
+          </p>
+        </header>
 
         <div
           ref={ref}
           className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 gap-6 text-left"
         >
           {skills.map((skill, index) => (
-            <motion.div
+            <motion.article
               key={index}
               initial={{ opacity: 0, x: -30 }}
               animate={inView ? { opacity: 1, x: 0 } : {}}
@@ -43,10 +61,17 @@ export default function SkillsSection() {
               className="space-y-2"
             >
               <div className="flex justify-between items-center">
-                <span className="dark:text-dark text-light font-poppins">{skill.name}</span>
-                <span className="text-muted text-sm font-poppins">{skill.level}%</span>
+                <span className="text-light dark:text-dark font-['Montserrat']">
+                  {skill.name}
+                </span>
+                <span
+                  className="text-muted text-sm font-['Montserrat']"
+                  aria-hidden="true"
+                >
+                  {skill.level}%
+                </span>
               </div>
-              <div className="w-full h-2 bg-muted/20 rounded-full overflow-hidden">
+              <div className="w-full h-2 bg-muted/20 rounded-full overflow-hidden" role="progressbar" aria-valuemin={0} aria-valuemax={100} aria-valuenow={skill.level} aria-label={`${skill.name} proficiency: ${skill.level}%`}>
                 <motion.div
                   initial={{ width: 0 }}
                   animate={inView ? { width: `${skill.level}%` } : {}}
@@ -54,7 +79,7 @@ export default function SkillsSection() {
                   className="h-full bg-primary rounded-full"
                 />
               </div>
-            </motion.div>
+            </motion.article>
           ))}
         </div>
       </div>

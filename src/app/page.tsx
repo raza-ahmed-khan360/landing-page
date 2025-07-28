@@ -17,13 +17,18 @@ export const metadata: Metadata = {
   title: 'Raza – Full Stack Developer',
   description:
     'Raza is a full-stack developer building modern, responsive websites with React, Next.js and Tailwind CSS.',
-  keywords: [
-    'Full Stack Developer',
-    'React Developer',
-    'Next.js Portfolio',
-    'Freelance Developer',
-    'Web Development Pakistan',
-  ],
+keywords: [
+  'Web Development Services',
+  'Custom Web Development',
+  'Web Application Development',
+  'Full Stack Web Developer',
+  'React Web Development Services',
+  'Freelance Web Developer Pakistan',
+  'Web Development Pakistan',
+  'Hire Web Developer',
+  'E-commerce Website Development',
+  'Next.js Development Services',
+],
   openGraph: {
     title: 'Raza – Full Stack Developer',
     description:

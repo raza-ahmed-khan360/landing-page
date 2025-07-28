@@ -17,12 +17,6 @@ const config: Config = {
         accent: "#ffb703", // Highlight
         muted: "#6b7280", // Subtext, descriptions
       },
-      fontFamily: {
-        sans: ["var(--font-geist-sans)", "sans-serif"],
-        mono: ["var(--font-geist-mono)", "monospace"],
-        montserrat: ["Montserrat", "sans-serif"],
-        poppins: ["Poppins", "sans-serif"],
-      },
       boxShadow: {
         card: "0 4px 12px rgba(0, 0, 0, 0.08)",
         glow: "0 0 20px rgba(0, 123, 255, 0.4)",

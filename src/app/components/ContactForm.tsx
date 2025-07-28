@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
+import { FaRegCalendarAlt } from "react-icons/fa";
 
 interface FormState {
   name: string;
@@ -29,15 +30,15 @@ function SuccessModal({ onClose }: { onClose: () => void }) {
         exit={{ scale: 0.8 }}
         transition={{ duration: 0.2 }}
       >
-        <h3 className="text-xl font-semibold font-montserrat text-dark dark:text-light mb-2">
+        <h3 className="text-xl font-semibold font-['Poppins'] text-dark dark:text-light mb-2">
           ✅ Message Sent
         </h3>
-        <p className="text-muted text-sm mb-4 font-poppins">
+        <p className="text-muted text-sm mb-4 font-['Montserrat']">
           Thank you! I’ll get back to you within 24 hours.
         </p>
         <button
           onClick={onClose}
-          className="px-5 py-2 bg-primary text-dark rounded-lg font-semibold hover:bg-white hover:text-primary border border-primary transition"
+          className="px-5 py-2 bg-primary text-dark font-['Poppins'] rounded-lg font-semibold hover:bg-white hover:text-primary border border-primary transition"
         >
           Close
         </button>
@@ -111,166 +112,114 @@ export default function ContactSection() {
     setSending(false);
   };
 
-
   return (
-    <section
-      id="contact"
-      className="w-full dark:bg-light bg-dark py-20 px-4 md:px-8"
-    >
-      <div className="max-w-3xl mx-auto text-center space-y-6">
-        <motion.h2
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-          className="text-3xl md:text-4xl font-bold dark:text-dark text-light font-montserrat"
-        >
-          Start Your Project
+    <section id="contact" aria-labelledby="contact-heading"
+      className="w-full bg-dark dark:bg-light py-20 px-4 md:px-8">
+      <div className="max-w-3xl mx-auto space-y-6 text-center">
+        <motion.h2 id="contact-heading"
+          initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.3 }}
+          className="text-3xl md:text-4xl font-bold font-['Poppins'] text-light dark:text-dark">
+          Web Development Services Inquiry
         </motion.h2>
-        <p className="text-muted font-poppins">
-          Fill in the form and I’ll get back to you within 24 hours.
+        <p className="text-muted font-['Montserrat']">
+          Interested in custom web development, Next.js development services, or freelance work? Fill the form and I'll respond within 24 hours.
         </p>
 
-        <form
-          onSubmit={handleSubmit}
-          className="space-y-4 text-left mt-10 dark:text-dark text-light font-poppins"
-        >
-          <input
-            name="name"
-            value={form.name}
-            onChange={handleChange}
-            placeholder="Your Name"
-            className="w-full px-4 py-3 rounded-xl border border-muted/30 focus:outline-none"
-            required
-          />
-          <input
-            name="email"
-            value={form.email}
-            onChange={handleChange}
-            placeholder="Your Email"
-            type="email"
-            className="w-full px-4 py-3 rounded-xl border border-muted/30"
-            required
-          />
-          <input
-            name="whatsapp"
-            value={form.whatsapp}
-            onChange={handleChange}
-            placeholder="WhatsApp Number"
-            className="w-full px-4 py-3 rounded-xl border border-muted/30"
-          />
+        <form onSubmit={handleSubmit} className="space-y-4 text-left mt-10 text-light dark:text-dark font-['Montserrat']">
+          <fieldset className="space-y-4">
+            <legend className="sr-only">Contact Details</legend>
 
-          <div>
-            <label className="text-sm text-muted block mb-1">
-              Choose Plan:
-            </label>
-            <select
-              name="plan"
-              value={form.plan}
-              onChange={handleChange}
-              className="w-full px-4 py-3 rounded-xl border border-muted/30"
-              required
-            >
-              <option className="text-light" value="Starter">
-                Starter
-              </option>
-              <option className="text-light" value="Pro">
-                Pro
-              </option>
-              <option className="text-light" value="Elite">
-                Elite
-              </option>
-            </select>
-          </div>
+            <div>
+              <label htmlFor="name" className="block mb-1">Name *</label>
+              <input id="name" name="name" value={form.name} onChange={handleChange}
+                placeholder="Your Name" className="w-full px-4 py-3 rounded-xl border border-muted/30 focus:outline-none" required />
+            </div>
 
-          <div>
-            <label className="text-sm text-muted block mb-1">Add-ons:</label>
+            <div>
+              <label htmlFor="email" className="block mb-1">Email *</label>
+              <input id="email" name="email" type="email" value={form.email} onChange={handleChange}
+                placeholder="Your Email" className="w-full px-4 py-3 rounded-xl border border-muted/30" required />
+            </div>
+
+            <div>
+              <label htmlFor="whatsapp" className="block mb-1">WhatsApp Number</label>
+              <input id="whatsapp" name="whatsapp" value={form.whatsapp} onChange={handleChange}
+                placeholder="e.g. +92300XXXXXXX" className="w-full px-4 py-3 rounded-xl border border-muted/30" />
+            </div>
+
+            <div>
+              <label htmlFor="plan" className="text-sm text-muted block mb-1">Choose Plan *</label>
+              <select id="plan" name="plan" value={form.plan} onChange={handleChange}
+                className="w-full px-4 py-3 rounded-xl border border-muted/30" required>
+                <option className="text-light" value="Starter">
+                  Starter
+                </option>
+                <option className="text-light" value="Pro">
+                  Pro
+                </option>
+                <option className="text-light" value="Elite">
+                  Elite
+                </option>
+              </select>
+            </div>
+          </fieldset>
+
+          <fieldset>
+            <legend className="text-sm text-muted block mb-1">Add-ons</legend>
             <div className="grid grid-cols-2 gap-2 text-sm">
-              {[
-                "Dark Mode",
-                "Logo Design",
-                "Multilingual Setup",
-                "Custom 404 Page",
-                "Hero Section Illustration",
-                "Loading Animations",
-                "Payment Gateway Integration",
-                "Newsletter Integration",
-              ].map((addon) => (
-                <label
-                  key={addon}
-                  className="flex items-center gap-2 cursor-pointer select-none font-poppins"
-                >
-                  <input
-                    type="checkbox"
-                    name="addons"
-                    value={addon}
-                    checked={form.addons.includes(addon)}
-                    onChange={handleChange}
-                    className="peer hidden"
-                  />
+              {["Dark Mode", "Logo Design", "Multilingual Setup", "Custom 404 Page", "Hero Illustration", "Loading Animations", "Payment Gateway", "Newsletter Integration"].map(addon => (
+                <label key={addon} className="flex items-center gap-2 cursor-pointer select-none font-poppins">
+                  <input type="checkbox" name="addons" value={addon}
+                    checked={form.addons.includes(addon)} onChange={handleChange}
+                    className="peer hidden" />
                   <div className="w-5 h-5 rounded-md border border-muted/40 bg-white dark:bg-dark flex items-center justify-center transition-colors duration-200 peer-checked:bg-primary peer-checked:border-primary">
-                    <svg
-                      className="w-3 h-3 text-light dark:text-dark opacity-0 peer-checked:opacity-100 transition-opacity"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth="3"
-                      viewBox="0 0 24 24"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        d="M5 13l4 4L19 7"
-                      />
+                    <svg className="w-3 h-3 text-light dark:text-dark opacity-0 peer-checked:opacity-100 transition-opacity" fill="none" stroke="currentColor" strokeWidth="3" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
                     </svg>
                   </div>
                   <span className="text-light dark:text-dark">{addon}</span>
                 </label>
               ))}
             </div>
+          </fieldset>
+
+          <div>
+            <label htmlFor="message" className="block mb-1">Message / Project Details *</label>
+            <textarea id="message" name="message" value={form.message} rows={4}
+              onChange={handleChange} placeholder="Describe your project…" className="w-full px-4 py-3 rounded-xl border border-muted/30" required />
           </div>
 
-          <textarea
-            name="message"
-            value={form.message}
-            onChange={handleChange}
-            rows={4}
-            placeholder="Message / Project Details"
-            className="w-full px-4 py-3 rounded-xl border border-muted/30"
-            required
-          />
+          {/* Meeting datetime field */}
+          <div className="relative w-full">
+            <label htmlFor="meeting" className="sr-only">Schedule Meeting</label>
+            <input id="meeting" name="meeting" value={form.meeting}
+              onChange={handleChange} type="datetime-local" required
+              className="peer w-full px-4 py-3 pr-12 rounded-xl border border-muted/30 bg-dark text-muted dark:bg-light appearance-none
+                [&::-webkit-calendar-picker-indicator]:opacity-0
+                [&::-webkit-calendar-picker-indicator]:absolute
+                [&::-webkit-calendar-picker-indicator]:right-4
+                [&::-webkit-calendar-picker-indicator]:top-1/2
+                [&::-webkit-calendar-picker-indicator]:-translate-y-1/2
+                [&::-webkit-calendar-picker-indicator]:w-full
+                [&::-webkit-calendar-picker-indicator]:h-full
+                [&::-webkit-calendar-picker-indicator]:cursor-pointer" />
+            <div className="absolute right-4 top-1/2 -translate-y-1/2 text-muted pointer-events-none">
+              <FaRegCalendarAlt className="text-lg" />
+            </div>
+          </div>
 
-          <input
-            name="meeting"
-            value={form.meeting}
-            onChange={handleChange}
-            type="datetime-local"
-            className="w-full px-4 py-3 rounded-xl border border-muted/30"
-            required
-          />
           <p className="text-sm text-muted mb-4">
             By submitting, you agree to our{" "}
-            <Link
-              href="/terms-and-conditions"
-              className="text-primary hover:underline"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Terms and Conditions
-            </Link>{" "}
-            and{" "}
-            <Link
-              href="/privacy-policy"
-              className="text-primary hover:underline"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
+            <Link href="/terms-and-conditions" className="text-primary hover:underline" target="_blank" rel="noopener noreferrer">
+              Terms & Conditions
+            </Link>{" "}and{" "}
+            <Link href="/privacy-policy" className="text-primary hover:underline" target="_blank" rel="noopener noreferrer">
               Privacy Policy
-            </Link>
+            </Link>.
           </p>
-          <button
-            type="submit"
-            className="w-full px-6 py-3 bg-primary text-dark rounded-xl font-semibold hover:bg-white hover:text-primary border border-primary transition"
-            disabled={sending}
-          >
+
+          <button type="submit" disabled={sending}
+            className="w-full px-6 py-3 font-['Poppins'] bg-primary text-dark rounded-xl font-semibold hover:bg-white hover:text-primary border border-primary transition">
             {sending ? "Sending..." : "Send Message"}
           </button>
         </form>

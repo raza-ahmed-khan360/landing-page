@@ -4,13 +4,15 @@ import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import Image from "next/image";
 import Link from "next/link";
+import { FaGithub } from "react-icons/fa";
+import { FaArrowUpRightFromSquare } from "react-icons/fa6";
 
 const projects = [
   {
     title: "Marketplace Hackathon",
     description:
-      "Decentralized product marketplace built with Next.js, Tailwind CSS, and Sanity CMS.",
-    image: "/projects/marketplace.png", // Update this image path as needed
+      "A decentralized marketplace built with Next.js, Tailwind CSS, Sanity CMS, and deployed via Vercel. A perfect example of modern Web Application Development.",
+    image: "/projects/marketplace.png",
     liveUrl: "https://marketplace-hackathon-comforty.vercel.app",
     githubUrl: "https://github.com/raza-ahmed-khan360/Marketplace-Hackathon",
     tech: ["Next.js", "Tailwind", "Sanity", "TypeScript", "Vercel"],
@@ -18,8 +20,8 @@ const projects = [
   {
     title: "Ace Tutors Global – Client Website",
     description:
-      "Professional tutoring service website with lead capture, responsive design, and secure deployment.",
-    image: "/projects/ace-tutors-global.png", // Make sure the image matches your asset folder
+      "Custom Web Development project for a professional tutoring platform with responsive layout and SEO-optimized structure.",
+    image: "/projects/ace-tutors-global.png",
     liveUrl: "https://ace-tutors-global.vercel.app",
     githubUrl: "https://github.com/raza-ahmed-khan360/ace-tutors-global",
     tech: [
@@ -34,8 +36,8 @@ const projects = [
   {
     title: "Personal Portfolio – Next.js & Tailwind",
     description:
-      "Responsive personal portfolio website built with Next.js and Tailwind CSS, featuring project showcases and contact integration.",
-    image: "/projects/personal-portfolio.png", // Ensure this image exists in your assets
+      "A Full Stack Developer portfolio built with Next.js and Tailwind CSS, demonstrating skills in modern front-end technologies and responsive design.",
+    image: "/projects/personal-portfolio.png",
     liveUrl: "https://personal-portfolio-next-js-tailwind-css.vercel.app",
     githubUrl:
       "https://github.com/raza-ahmed-khan360/next-js-milestone-02-project-02",
@@ -45,7 +47,16 @@ const projects = [
 
 const itemVariant = {
   hidden: { opacity: 0, y: 30 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.5 } },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.3 } },
+};
+
+const containerVariant = {
+  hidden: {},
+  visible: {
+    transition: {
+      staggerChildren: 0.2,
+    },
+  },
 };
 
 export default function ProjectsSection() {
@@ -55,69 +66,81 @@ export default function ProjectsSection() {
     <section
       id="projects"
       className="w-full bg-light dark:bg-dark py-20 px-4 md:px-8"
+      aria-label="Web Development Portfolio Projects"
     >
       <div className="max-w-6xl mx-auto space-y-12">
-        <h2 className="text-3xl md:text-4xl font-bold text-center font-montserrat text-dark dark:text-light">
-          Featured Projects
+        <h2 className="text-3xl md:text-4xl font-bold text-center font-['Poppins'] text-dark dark:text-light">
+          Featured Web Development Projects
         </h2>
 
-        <div
+        <motion.div
           ref={ref}
+          variants={containerVariant}
+          initial="hidden"
+          animate={inView ? "visible" : "hidden"}
           className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"
         >
           {projects.map((project, i) => (
-            <motion.div
+            <motion.article
               key={i}
-              whileHover={{ scale: 1.05, y: -5 }}
               variants={itemVariant}
-              initial="hidden"
-              animate={inView ? "visible" : "hidden"}
+              whileHover={{ scale: 1.05, y: -5 }}
               className="bg-dark dark:bg-light border border-muted/30 rounded-xl overflow-hidden shadow-sm hover:shadow-lg transition-all duration-300"
+              aria-label={`Project: ${project.title}`}
             >
-              <Image
-                src={project.image}
-                alt={project.title}
-                width={500}
-                height={300}
-                className="w-full h-56 object-cover"
-              />
+              <figure>
+                <Image
+                  src={project.image}
+                  alt={`Screenshot of ${project.title}`}
+                  width={500}
+                  height={300}
+                  className="w-full h-56 object-cover"
+                  priority={i === 0}
+                />
+                <figcaption className="sr-only">{project.title}</figcaption>
+              </figure>
+
               <div className="p-4 space-y-2">
-                <h3 className="text-lg font-semibold font-poppins text-light dark:text-dark">
+                <h3 className="text-lg font-semibold font-['Montserrat'] text-light dark:text-dark">
                   {project.title}
                 </h3>
-                <p className="text-muted text-sm font-poppins">
+                <p className="text-muted text-sm font-['Montserrat'] leading-relaxed">
                   {project.description}
                 </p>
-                <div className="flex flex-wrap gap-2 mt-2">
-                  {project.tech.map((tech, index) => (
-                    <span
-                      key={index}
-                      className="text-xs dark:bg-dark bg-light text-dark dark:text-primary px-2 py-1 rounded-full font-poppins"
+
+                <ul className="flex flex-wrap gap-2 text-xs mt-2 text-muted">
+                  {project.tech.map((tech, i) => (
+                    <li
+                      key={i}
+                      className="bg-muted/10 dark:bg-muted/20 px-2 py-1 rounded-md"
                     >
                       {tech}
-                    </span>
+                    </li>
                   ))}
-                </div>
-                <div className="flex gap-4 mt-4">
+                </ul>
+
+                <div className="flex gap-3 mt-4">
                   <Link
                     href={project.liveUrl}
                     target="_blank"
-                    className="text-sm font-poppins text-primary underline"
+                    className="flex items-center gap-2 px-3 py-1.5 rounded-full border border-primary text-primary dark:text-primary bg-transparent hover:bg-primary/10 text-sm font-medium transition"
                   >
+                    <FaArrowUpRightFromSquare className="text-sm" />
                     Live Site
                   </Link>
                   <Link
                     href={project.githubUrl}
                     target="_blank"
-                    className="text-sm font-poppins text-muted underline"
+                    className="flex items-center gap-2 px-3 py-1.5 rounded-full border border-muted text-muted hover:bg-muted/10 dark:hover:bg-muted/20 text-sm font-medium transition"
                   >
+                    <FaGithub className="text-base" />
                     GitHub
                   </Link>
                 </div>
               </div>
-            </motion.div>
+            </motion.article>
           ))}
-        </div>
+        </motion.div>
       </div>
     </section>
   );

@@ -1,10 +1,23 @@
 import type { Metadata } from "next";
 import { Analytics } from "@vercel/analytics/next"
 import "./globals.css";
+import { Montserrat, Poppins } from "next/font/google";
 import ClientLayout from './components/ClientLayout'
 import BackToTopButton from "./components/BackToTopButton";
 import Navbar from "./components/NavBar";
 import Footer from "./components/FooterSection";
+
+const montserrat = Montserrat({
+  subsets: ["latin"],
+  weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
+  variable: "--font-montserrat",
+});
+
+const poppins = Poppins({
+  subsets: ["latin"],
+  weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
+  variable: "--font-poppins",
+});
 
 export const metadata: Metadata = {
   title: 'Raza – Dev',
@@ -37,7 +50,7 @@ export default function RootLayout({
       <head>
         <meta name="google-site-verification" content="_Fql-lbojPPhGIsc7aGAU1iNknR5icdb3_WXEsPzgqc" />
       </head>
-      <body className={`font-sans scroll-smooth antialiased`}>
+      <body className={`${montserrat.variable} ${poppins.variable} font-montserrat scroll-smooth antialiased`}>
         <Navbar />
         <ClientLayout>{children}</ClientLayout>
         <Analytics />

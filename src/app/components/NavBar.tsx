@@ -27,7 +27,7 @@ export default function Navbar() {
         {/* Logo */}
         <Link
           href="/"
-          className="text-xl font-bold font-montserrat text-dark dark:text-light flex items-center"
+          className="text-xl font-bold font-['Poppins'] text-dark dark:text-light flex items-center"
         >
           <span className="relative w-10 h-10 mr-2">
             {/* Light mode logo */}
@@ -53,7 +53,7 @@ export default function Navbar() {
         </Link>
 
         {/* Desktop Nav */}
-        <nav className="hidden md:flex items-center space-x-6 font-poppins text-sm text-dark dark:text-light">
+        <nav className="hidden md:flex items-center space-x-6 font-['Poppins'] text-sm text-dark dark:text-light">
           <Link href="/#projects" className="hover:text-primary transition">Projects</Link>
           <Link href="/#pricing" className="hover:text-primary transition">Pricing</Link>
           <Link href="/#skills" className="hover:text-primary transition">Skills</Link>
@@ -101,7 +101,7 @@ export default function Navbar() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -10 }}
             transition={{ duration: 0.2 }}
-            className="md:hidden px-4 pb-6 space-y-4 font-poppins bg-white/60 dark:bg-black/60 backdrop-blur-md border-t border-muted/20 text-dark dark:text-light"
+            className="md:hidden px-4 pb-6 space-y-4 font-['Poppins'] bg-white/60 dark:bg-black/60 backdrop-blur-md border-t border-muted/20 text-dark dark:text-light"
           >
             <Link href="/#projects" onClick={() => setOpen(false)} className="block">Projects</Link>
             <Link href="/#pricing" onClick={() => setOpen(false)} className="block">Pricing</Link>
