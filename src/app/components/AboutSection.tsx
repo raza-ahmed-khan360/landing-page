@@ -33,7 +33,7 @@ export default function AboutSection() {
             <strong>custom web application</strong>, an <strong>e-commerce website</strong>, or a sleek portfolio, I deliver high-quality, scalable solutions.
           </p>
           <p className="text-light/80 font-['Montserrat']">
-            Need a design turned into code? I convert Figma/Sketch designs into pixel-perfect, responsive websites. Let's{" "}
+            Need a design turned into code? I convert Figma/Sketch designs into pixel-perfect, responsive websites. Let&apos;s{" "}
             <strong>build your web presence</strong> with clean code, semantic structure, and top performance.
           </p>
         </motion.div>

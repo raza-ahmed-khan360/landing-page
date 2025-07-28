@@ -122,7 +122,7 @@ export default function ContactSection() {
           Web Development Services Inquiry
         </motion.h2>
         <p className="text-muted font-['Montserrat']">
-          Interested in custom web development, Next.js development services, or freelance work? Fill the form and I'll respond within 24 hours.
+          Interested in custom web development, Next.js development services, or freelance work? Fill the form and I&apos;ll respond within 24 hours.
         </p>
 
         <form onSubmit={handleSubmit} className="space-y-4 text-left mt-10 text-light dark:text-dark font-['Montserrat']">
