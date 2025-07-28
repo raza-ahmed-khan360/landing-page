@@ -1,11 +1,16 @@
-export const siteUrl = 'https://raza-dev.vercel.app';
-export const generateRobotsTxt = true;
-export const exclude = ['/private-page'];
-export async function transform(config, path) {
+/** @type {import('next-sitemap').IConfig} */
+const config = {
+  siteUrl: 'https://raza-dev.vercel.app',
+  generateRobotsTxt: true,
+  exclude: ['/private-page'],
+  transform: async (config, path) => {
     return {
-        loc: path, // The final URL
-        lastmod: new Date().toISOString(),
-        changefreq: 'monthly',
-        priority: 0.7,
+      loc: path,
+      lastmod: new Date().toISOString(),
+      changefreq: 'monthly',
+      priority: 0.7,
     };
-}
+  },
+};
+
+export default config;

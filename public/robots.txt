@@ -1,0 +1,9 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://raza-dev.vercel.app
+
+# Sitemaps
+Sitemap: https://raza-dev.vercel.app/sitemap.xml
