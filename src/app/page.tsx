@@ -18,16 +18,45 @@ export const metadata: Metadata = {
   description:
     'Raza is a full-stack developer building modern, responsive websites with React, Next.js and Tailwind CSS.',
 keywords: [
-  'Web Development Services',
-  'Custom Web Development',
-  'Web Application Development',
-  'Full Stack Web Developer',
-  'React Web Development Services',
-  'Freelance Web Developer Pakistan',
-  'Web Development Pakistan',
-  'Hire Web Developer',
-  'E-commerce Website Development',
-  'Next.js Development Services',
+  // USA
+  "Web Development Services USA",
+  "Custom Web Development USA",
+  "Web Application Development USA",
+  "Full Stack Web Developer USA",
+  "React Web Development Services USA",
+  "Hire Web Developer USA",
+  "E-commerce Website Development USA",
+  "Next.js Development Services USA",
+
+  // UK
+  "Web Development Services UK",
+  "Custom Web Development UK",
+  "Web Application Development UK",
+  "Full Stack Web Developer UK",
+  "React Web Development Services UK",
+  "Hire Web Developer UK",
+  "E-commerce Website Development UK",
+  "Next.js Development Services UK",
+
+  // Canada
+  "Web Development Services Canada",
+  "Custom Web Development Canada",
+  "Web Application Development Canada",
+  "Full Stack Web Developer Canada",
+  "React Web Development Services Canada",
+  "Hire Web Developer Canada",
+  "E-commerce Website Development Canada",
+  "Next.js Development Services Canada",
+
+  // UAE
+  "Web Development Services Dubai",
+  "Custom Web Development Dubai",
+  "Web Application Development UAE",
+  "Full Stack Web Developer Dubai",
+  "React Web Development Services Dubai",
+  "Hire Web Developer Dubai",
+  "E-commerce Website Development UAE",
+  "Next.js Development Services UAE"
 ],
   openGraph: {
     title: 'Raza – Full Stack Developer',
